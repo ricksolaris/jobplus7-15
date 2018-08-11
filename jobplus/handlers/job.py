@@ -1,21 +1,31 @@
+<<<<<<< HEAD
 from flask import Blueprint, render_template, current_app, request, redirect, url_for, abort, flash
 from flask_login import current_user, login_required
 from jobplus.decorators import company_required
 from jobplus.models import Job, db, Delivery
 from jobplus.forms import AddJobForm
+=======
+from flask import Blueprint, render_template, current_app, request
+from jobplus.models import Job
+>>>>>>> ab913006ffd3cba58242d7313c8dc6c115197c19
 
 job = Blueprint('job',__name__,url_prefix='/job')
 
 @job.route('/')
 def index():
     page = request.args.get('page', default=1, type=int)
+<<<<<<< HEAD
     #filter_by过滤下架的职位
     pagination = Job.query.filter_by(up=True).order_by(Job.created_at.desc()).paginate(
+=======
+    pagination = Job.query.order_by(Job.created_at.desc()).paginate(
+>>>>>>> ab913006ffd3cba58242d7313c8dc6c115197c19
         page = page,
         per_page = current_app.config['INDEX_PER_PAGE'],
         error_out = False
     )
     return render_template('job/index.html', pagination=pagination, active='job')
+<<<<<<< HEAD
 
 
 # 为职位详情添加路由
@@ -177,3 +187,5 @@ def rejectlist():
         error_out = False
     )
     return render_template('job/rejectlist.html',pagination=pagination)
+=======
+>>>>>>> ab913006ffd3cba58242d7313c8dc6c115197c19

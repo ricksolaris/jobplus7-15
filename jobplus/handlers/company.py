@@ -1,7 +1,11 @@
 from flask import Blueprint,flash,redirect,url_for,render_template, current_app, request
 from flask_login import login_required,current_user
 from jobplus.forms import CompanyProfileForm
+<<<<<<< HEAD
 from jobplus.models import Company, Job,User
+=======
+from jobplus.models import Company, Job
+>>>>>>> ab913006ffd3cba58242d7313c8dc6c115197c19
 
 company = Blueprint('company',__name__,url_prefix='/company')
 
@@ -29,6 +33,7 @@ def index():
         per_page = current_app.config['INDEX_PER_PAGE'],
         error_out = False
     )
+<<<<<<< HEAD
     return render_template('company/index.html', pagination=pagination, active='company')
 
 @company.route('/<int:company_id>')
@@ -38,3 +43,6 @@ def detail(company_id):
     if not company.is_company:
         about(404)
     return render_template('company/detail.html',company=company,panel=panel)
+=======
+    return render_template('company/index.html', pagination=pagination, active='company')
+>>>>>>> ab913006ffd3cba58242d7313c8dc6c115197c19
